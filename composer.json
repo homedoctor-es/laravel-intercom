@@ -1,0 +1,41 @@
+{
+    "name": "homedoctor-es/laravel-intercom",
+    "version": "1.0.0",
+    "description": "Laravel integration of the [Intercom PHP SDK](https://github.com/intercom/intercom-php).",
+    "keywords": [
+        "php",
+        "homedoctor-es",
+        "laravel",
+        "intercom"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Homedoctor es",
+            "email": "juan.sola@homedoctor.es"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": ">=5.7",
+        "php-http/guzzle6-adapter": "^2.0",
+        "intercom/intercom-php": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "HomedoctorEs\\Laravel\\Intercom\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HomedoctorEs\\Laravel\\Intercom\\IntercomServiceProvider"
+            ],
+            "aliases": {
+                "Intercom": "HomedoctorEs\\Laravel\\Intercom\\Facades\\Intercom"
+            }
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
