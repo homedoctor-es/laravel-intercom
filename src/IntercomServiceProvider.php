@@ -19,7 +19,11 @@
 
 namespace HomedoctorEs\Laravel\Intercom;
 
+use HomedoctorEs\Laravel\Intercom\Notifications\Channel\IntercomChannel;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
+use Intercom\IntercomClient;
 
 
 class IntercomServiceProvider extends ServiceProvider
@@ -35,6 +39,12 @@ class IntercomServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/config/intercom.php' => config_path('intercom.php'),
         ]);
+
+        $this->app->when(IntercomChannel::class)
+            ->needs(Intercom::class)
+            ->give(function ($app) {
+                return $this->getIntercomClient($app['config']);
+            });
     }
 
     /**
@@ -43,17 +53,14 @@ class IntercomServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('intercom', function ($app) {
-            $config = $app['config']->get('intercom');
-            return new Intercom(
-                isset($config['api_token']) ? $config['api_token'] : null,
-                null,
-                [
-                    'Intercom-Version' => isset($config['api_version']) ? $config['api_version'] : '2.3',
-                ]
-            );
+            return $this->getIntercomClient($app['config']);
         });
 
         $this->app->alias('intercom', Intercom::class);
+
+        Notification::extend('intercom', static function (Container $app) {
+            return $app->make(IntercomChannel::class);
+        });
     }
 
     /**
@@ -65,6 +72,24 @@ class IntercomServiceProvider extends ServiceProvider
             'intercom',
             Intercom::class
         ];
+    }
+
+    /**
+     * @param $config
+     * @return Intercom
+     */
+    protected function getIntercomClient($config): Intercom
+    {
+        $config = $config->get('intercom');
+        $client = new IntercomClient(
+            $config['api_token'] ?? null,
+            null,
+            [
+                'Intercom-Version' => $config['api_version'] ?? '2.3',
+            ]
+        );
+
+        return new Intercom($client);
     }
 
 }

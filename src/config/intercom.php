@@ -17,4 +17,12 @@ return [
       | The Intercom API version.
      */
     'api_version_token' => env('INTERCOM_API_VERSION', '2.3'),
+    /*
+      |--------------------------------------------------------------------------
+      | Admin User id
+      |--------------------------------------------------------------------------
+      |
+      | The Intercom Admin User Id.
+     */
+    'admin_user_id' => env('INTERCOM_ADMIN_USER_ID'),
 ];
