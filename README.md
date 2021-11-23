@@ -112,7 +112,7 @@ class IntercomNotification extends Notification
     {
         return IntercomMessage::create("This is a test message")
             ->from(config('intercom.admin_user_id'))
-            ->toUserId(xxxxx);  //this param can be resolved later
+            ->toUserId(xxxxx);  //this param can be resolved later in routeNotificationForIntercom
     }
 }
 ```
