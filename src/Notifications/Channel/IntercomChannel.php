@@ -77,7 +77,11 @@ class IntercomChannel
             );
         }
 
-        $this->client->messages()->create(
+        if (config('intercom.is_channel_active') === false) {
+            return null;
+        }
+        
+        return $this->client->messages()->create(
             $message->toArray()
         );
     }

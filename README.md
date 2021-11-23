@@ -62,6 +62,7 @@ config/intercom.php
 
 ```php
 return [
+    'is_channel_active' => env('INTERCOM_CHANNEL_ACTIVE', false),
     'api_token' => env('HOLDED_API_TOKEN'),
     'api_version' => env('HOLDED_API_VERSION', '2.3'),
     'admin_user_id' => env('INTERCOM_ADMIN_USER_ID')
@@ -70,6 +71,7 @@ return [
 
 5. Or use .env file
 ```
+INTERCOM_CHANNEL_ACTIVE=true
 HOLDED_API_TOKEN=
 HOLDED_API_VERSION=2.3
 INTERCOM_ADMIN_USER_ID=
