@@ -26,6 +26,11 @@ use Illuminate\Support\ServiceProvider;
 use Intercom\IntercomClient;
 
 
+/**
+ * Class IntercomServiceProvider
+ *
+ * @author Juan Solá <juan.sola@homedoctor.es>
+ */
 class IntercomServiceProvider extends ServiceProvider
 {
 

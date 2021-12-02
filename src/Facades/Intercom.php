@@ -21,6 +21,11 @@ namespace HomedoctorEs\Laravel\Intercom\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * Class Intercom
+ *
+ * @author Juan Solá <juan.sola@homedoctor.es>
+ */
 class Intercom extends Facade
 {
 

@@ -1,9 +1,32 @@
 <?php
 
+/**
+ * Part of the Intercom Laravel package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @package    Intercom Laravel
+ * @version    1.0.0
+ * @author     Juan Solá
+ * @license    BSD License (3-clause)
+ * @copyright (c) 2021, Homedoctor Smart Medicine
+ */
+
 namespace HomedoctorEs\Laravel\Intercom\Notifications\Messages;
 
+/**
+ * Class IntercomMessage
+ *
+ * @author Juan Solá <juan.sola@homedoctor.es>
+ */
 class IntercomMessage
 {
+
     const TYPE_EMAIL = 'email';
 
     const TYPE_INAPP = 'inapp';
@@ -112,7 +135,7 @@ class IntercomMessage
     {
         $this->payload['from'] = [
             'type' => 'admin',
-            'id'   => $adminId,
+            'id' => $adminId
         ];
 
         return $this;
@@ -139,7 +162,7 @@ class IntercomMessage
     {
         $this->payload['to'] = [
             'type' => 'user',
-            'id'   => $id,
+            'id' => $id
         ];
 
         return $this;
@@ -153,8 +176,8 @@ class IntercomMessage
     public function toUserEmail(string $email): self
     {
         $this->payload['to'] = [
-            'type'  => 'user',
-            'email' => $email,
+            'type' => 'user',
+            'email' => $email
         ];
 
         return $this;
@@ -169,7 +192,7 @@ class IntercomMessage
     {
         $this->payload['to'] = [
             'type' => 'contact',
-            'id'   => $id,
+            'id' => $id
         ];
 
         return $this;
@@ -202,4 +225,5 @@ class IntercomMessage
     {
         return $this->payload;
     }
+
 }

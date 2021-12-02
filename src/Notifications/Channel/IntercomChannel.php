@@ -1,5 +1,22 @@
 <?php
 
+/**
+ * Part of the Intercom Laravel package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.
+ *
+ * @package    Intercom Laravel
+ * @version    1.0.0
+ * @author     Juan Solá
+ * @license    BSD License (3-clause)
+ * @copyright (c) 2021, Homedoctor Smart Medicine
+ */
+
 namespace HomedoctorEs\Laravel\Intercom\Notifications\Channel;
 
 use GuzzleHttp\Exception\BadResponseException;
@@ -8,6 +25,11 @@ use HomedoctorEs\Laravel\Intercom\Exceptions\RequestException;
 use HomedoctorEs\Laravel\Intercom\Intercom;
 use Illuminate\Notifications\Notification;
 
+/**
+ * Class IntercomChannel
+ *
+ * @author Juan Solá <juan.sola@homedoctor.es>
+ */
 class IntercomChannel
 {
 
@@ -80,7 +102,7 @@ class IntercomChannel
         if (config('intercom.is_channel_active') === false) {
             return null;
         }
-        
+
         return $this->client->messages()->create(
             $message->toArray()
         );
