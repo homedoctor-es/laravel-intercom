@@ -1,6 +1,5 @@
 {
     "name": "homedoctor-es/laravel-intercom",
-    "version": "1.1.0",
     "description": "Laravel integration of the [Intercom PHP SDK](https://github.com/intercom/intercom-php).",
     "keywords": [
         "php",
